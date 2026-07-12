@@ -2,6 +2,24 @@
 
 A Python-based network traffic analyzer that captures and inspects live network packets using Scapy. The tool analyzes IPv4/IPv6 traffic, extracts protocol and packet information, performs basic security analysis, visualizes protocol distribution, and exports packet statistics for network monitoring and troubleshooting.
 
+## Architecture
+
+```text
+                 Live Network
+                      │
+                 Packet Capture
+                 (Scapy Sniff)
+                      │
+              Packet Analyzer
+                      │
+      ┌───────────────┼───────────────┐
+      │               │               │
+Protocol Stats   Security Check   Packet Details
+      │               │               │
+      └───────────────┼───────────────┘
+                      │
+      CSV Export   Pie Chart   Console Report
+```
 ---
 
 ## Features
