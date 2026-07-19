@@ -1,112 +1,146 @@
 # Network Traffic Analyzer & Packet Inspection Tool
 
-A Python-based network traffic analyzer that captures and inspects live network packets using Scapy. The tool analyzes IPv4/IPv6 traffic, extracts protocol and packet information, performs basic security analysis, visualizes protocol distribution, and exports packet statistics for network monitoring and troubleshooting.
+A Python-based network traffic analyzer built using **Scapy** that captures and inspects live network packets, extracts protocol information across the TCP/IP stack, generates traffic statistics, detects basic suspicious network activity, and exports analysis reports.
 
-## Architecture
-
-```text
-                 Live Network
-                      │
-                 Packet Capture
-                 (Scapy Sniff)
-                      │
-              Packet Analyzer
-                      │
-      ┌───────────────┼───────────────┐
-      │               │               │
-Protocol Stats   Security Check   Packet Details
-      │               │               │
-      └───────────────┼───────────────┘
-                      │
-      CSV Export   Pie Chart   Console Report
-```
 ---
 
 ## Features
 
-### Packet Capture
-- Capture live network packets using Scapy
-- Support for IPv4 and IPv6 traffic
-- Configurable packet capture limit
-
-### Packet Analysis
-- Source and Destination IP addresses
-- Source and Destination Ports
-- Packet Size
-- IP Version Detection
-- DNS Query Extraction
-
-### Supported Protocols
-- TCP
-- UDP
-- DNS
-- ICMP
-- ARP
-- IPv4
-- IPv6
-
-### Traffic Statistics
-- Protocol Distribution
-- Top Network Talkers
-- Packet Size Statistics
-- Bandwidth Estimation
-
-### Security Analysis
-- Basic ICMP Ping Flood Detection
-- Basic TCP Port Scan Detection
-- Configurable detection thresholds
-
-### Data Export
-- Export captured packet details to CSV
-- Generate protocol distribution pie chart
+- Capture live network traffic using Scapy
+- Analyze IPv4, IPv6, and ARP packets
+- Inspect TCP, UDP, and ICMP protocols
+- Identify application protocols including:
+  - DNS
+  - HTTP
+  - HTTPS
+  - SSH
+  - FTP
+  - SMTP
+  - DHCP
+  - NTP
+- Extract:
+  - Source/Destination IP Address
+  - Source/Destination Port
+  - Packet Size
+  - DNS Query Name
+- Generate:
+  - Network Layer Statistics
+  - Transport Layer Statistics
+  - Application Layer Statistics
+  - Top Packet Senders
+  - Top Bandwidth Senders
+  - Packet Size Statistics
+  - Bandwidth Estimation
+- Detect basic security events:
+  - Potential ICMP Flood
+  - Potential TCP Port Scan
+- Export captured traffic to CSV
+- Generate protocol distribution charts using Matplotlib
 
 ---
 
 ## Project Structure
 
-```text
-network-traffic-analyzer/
+```
+NetworkTrafficAnalyzer/
 │
-├── main.py
-├── config.py
-├── requirements.txt
-├── README.md
-├── LICENSE
-├── .gitignore
+├── exports/
+│   └── network_traffic.csv
+│
+├── graphs/
+│   ├── application_distribution.png
+│   ├── network_distribution.png
+│   └── transport_distribution.png
 │
 ├── modules/
-│   ├── __init__.py
 │   ├── analyzer.py
 │   ├── capture.py
 │   ├── exporter.py
 │   ├── security.py
 │   └── visualizer.py
 │
-├── charts/
-│   └── protocol_distribution.png
-│
-├── exports/
-│   └── network_traffic.csv
-│
-└── screenshots/
-    ├── terminal-output.png
-    └── protocol_distribution.png
+├── main.py
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 ## Technologies Used
 
-- Python 3
+- Python
 - Scapy
 - Pandas
 - Matplotlib
-- TCP/IP
-- IPv4
-- IPv6
-- DNS
-- Linux / Windows
 
+---
+
+## How It Works
+
+```
+Live Packet Capture
+        │
+        ▼
+Packet Analysis
+(Network → Transport → Application)
+        │
+        ▼
+Traffic Statistics
+        │
+        ▼
+Security Analysis
+        │
+        ▼
+CSV Export & Visualizations
+```
+
+---
+
+## Sample Output
+
+```
+Network Layer Statistics
+
+IPv4 : 50
+IPv6 : 150
+
+Transport Layer Statistics
+
+TCP : 194
+UDP : 6
+
+Application Layer Statistics
+
+HTTPS : 194
+DNS : 6
+
+Top Packet Senders
+
+2606:4700:... : 96 packets
+
+Top Bandwidth Senders
+
+2606:4700:... : 131712 bytes
+
+Packet Size Statistics
+
+Average Packet Size : 850.37 bytes
+
+Bandwidth Estimation
+
+Capture Duration : 0.51 seconds
+Bandwidth : 2.647 Mbps
+
+Security Analysis
+
+ICMP Flood : Not Detected
+Port Scan : Not Detected
+```
+C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\application_distribution.png
+C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\modules\analyzer.py
+C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\network_distribution.png
+C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\protocol_distribution.png
+C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\transport_distribution.png
 ---
 
 ## Installation
@@ -114,13 +148,13 @@ network-traffic-analyzer/
 Clone the repository
 
 ```bash
-git clone https://github.com/Omsaigulhane/network-traffic-analyzer.git
+git clone https://github.com/<your-username>/<repository-name>.git
 ```
 
-Move to the project directory
+Move into the project directory
 
 ```bash
-cd network-traffic-analyzer
+cd <repository-name>
 ```
 
 Install dependencies
@@ -129,91 +163,56 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
-Run the application
+---
+
+## Usage
+
+Run the analyzer
 
 ```bash
 python main.py
 ```
 
----
+The program will:
 
-## Sample Output
-
-```text
-NETWORK TRAFFIC ANALYSIS REPORT
-
-Total Packets Captured : 50
-
-Protocol Statistics
-TCP : 38
-DNS : 8
-UDP : 4
-
-Top Talkers
-192.168.219.170 : 15
-
-Packet Size Statistics
-Average Packet Size : 335 bytes
-Maximum Packet Size : 1354 bytes
-Minimum Packet Size : 54 bytes
-
-Bandwidth Estimation
-Estimated Bandwidth : 0.028 Mbps
-
-Security Analysis
-Ping Flood : Not Detected
-Port Scan : Not Detected
-```
+- Capture live packets
+- Analyze traffic
+- Display network statistics
+- Perform basic security analysis
+- Export results to CSV
+- Generate protocol distribution graphs
 
 ---
 
-## Screenshots
+## Security Analysis
 
-### Terminal Output
+The project performs lightweight heuristic-based detection for:
 
-![Terminal Output](screenshots/terminal-output.png)
+- ICMP Flood Activity
+- TCP Port Scanning
 
-### Protocol Distribution
-
-![Protocol Distribution](charts/protocol_distribution.png)
+These checks are intended for educational purposes and provide basic traffic analysis rather than full intrusion detection capabilities.
 
 ---
 
-## Skills Demonstrated
+## Project Limitations
 
-- Python Programming
-- Network Packet Analysis
-- TCP/IP Fundamentals
-- DNS Analysis
-- IPv4 & IPv6
-- Network Monitoring
-- Packet Inspection
-- Traffic Visualization
-- Security Analysis
-- Data Export
-- Troubleshooting
-- Git & GitHub
+- HTTPS traffic is identified using well-known port numbers rather than decrypting encrypted payloads.
+- Application protocol identification (except DNS) relies primarily on standard port mappings.
+- Security detection uses simple heuristics and is not intended to replace enterprise IDS solutions.
 
 ---
 
 ## Future Improvements
 
-- Real-time traffic dashboard
-- HTTP and HTTPS traffic analysis
-- Packet filtering
-- Multiple interface support
-- JSON export
-- Live bandwidth monitoring
-- Advanced anomaly detection
+- Support offline PCAP file analysis
+- Add packet filtering options
+- Improve protocol detection accuracy
+- Expand security detection rules
+- Enhance reporting and visualization
 
 ---
 
-## Why I Built This Project
+## Author
 
-This project was developed to strengthen practical networking skills by capturing and analyzing live network traffic. It demonstrates packet inspection, protocol analysis, traffic visualization, and basic security monitoring concepts commonly used in network troubleshooting and Site Reliability Engineering (SRE).
-
----
-
-## License
-
-This project is licensed under the MIT License.
+**Omsai Gulhane**
