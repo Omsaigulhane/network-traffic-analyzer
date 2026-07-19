@@ -1,19 +1,30 @@
 from collections import Counter
-
 import matplotlib.pyplot as plt
 
 
-def protocol_chart(packet_records, output_path="charts/protocol_distribution.png"):
-    """Create a protocol distribution chart and save it to disk."""
-    protocols = [packet["protocol"] for packet in packet_records]
-    counts = Counter(protocols)
+def protocol_chart(packet_records,
+                   field_name,
+                   title,
+                   output_path):
 
-    plt.figure(figsize=(8, 8))
-    plt.pie(counts.values(), labels=counts.keys(), autopct="%1.1f%%")
-    plt.title("Protocol Distribution")
+    values = [packet[field_name] for packet in packet_records]
+
+    counts = Counter(values)
+
+    plt.figure(figsize=(8,8))
+
+    plt.pie(
+        counts.values(),
+        labels=counts.keys(),
+        autopct="%1.1f%%"
+    )
+
+    plt.title(title)
+
     plt.savefig(output_path)
-    plt.show()                 # Display window
+
+    plt.show()
+
     plt.close()
 
-
-    print("\nChart saved successfully.")
+    print(f"\n{title} saved successfully.")

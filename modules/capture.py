@@ -1,8 +1,7 @@
 from scapy.all import sniff
 import time
 def capture_packets(packet_count=5):
-    """Capture the requested number of packets."""
-
+   
     print(f"Capturing {packet_count} packets...")
 
     start_time = time.time()
