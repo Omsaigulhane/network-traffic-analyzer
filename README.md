@@ -136,11 +136,8 @@ Security Analysis
 ICMP Flood : Not Detected
 Port Scan : Not Detected
 ```
-C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\application_distribution.png
-C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\modules\analyzer.py
-C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\network_distribution.png
-C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\protocol_distribution.png
-C:\Users\omsai gulhane\Documents\Network Traffic Analyzer & Packet Inspection Tool\charts\transport_distribution.png
+<img width="800" height="800" alt="transport_distribution" src="https://github.com/user-attachments/assets/438ad441-b467-4142-b196-1e7038f610c9" />
+
 ---
 
 ## Installation
