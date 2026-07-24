@@ -23,10 +23,6 @@ def security_analysis(packet_records):
 
     print("\nSecurity Analysis")
 
-    # ---------------------------
-    # ICMP Flood Detection
-    # ---------------------------
-
     flood = False
 
     for ip, count in icmp_counter.items():
@@ -39,10 +35,6 @@ def security_analysis(packet_records):
 
     if not flood:
         print("ICMP Flood           : Not Detected")
-
-    # ---------------------------
-    # Port Scan Detection
-    # ---------------------------
 
     scan = False
 
